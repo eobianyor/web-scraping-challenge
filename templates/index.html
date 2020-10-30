@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>NASA Mars Info</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get me the Latest Mars News!</a></p>
+    </div>
+
+    <!-- MARS PAGE SET UP -->
+    <div class="row" id="Mars-News" id="Mars-First-Row">
+      <div class="col-md-12">
+        <h3>LATEST NEWS ON OUR RED NEIGHBOR</h3>
+        <h4>{{mars_results.Mars_News_title}}</h4>
+        <p>{{mars_results.Mars_News_paragraph}}</p>
+      </div>
+    </div>
+
+    <div class="row" id="Mars-Second-Row">
+      <div class="col-md-8" id="Mars-featured-image">
+        <h3>FEATURED IMAGES</h3>
+        <img src="{{mars_results.featured_image}}" alt="Featured image from the Red Planet">
+      </div>
+      <div class="col-md-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date Posted</th>
+              <th scope="col">Headline</th>
+              <th scope="col">Neighborhood</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+          <!-- Within the table body, create a new table row (<tr>) for each player in our database. -->
+            {% for listing in listing_results %}
+            <tr>
+              <td>{{ listing.date }}</td>
+              <td>{{ listing.headline }}</td>
+              <td>{{ listing.hood }}</td>
+              <td>{{ listing.price }}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" id="Mars-Third-Row">
+      <div class="col-md-6" id="Mars-Hemispheres">
+        <h3>HEMISPHERE 1</h3>
+        <img src="{{mars_results.Mars_hemisphere_pics.Cerberus Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+      </div>
+      <div class="col-md-6" id="Mars-Hemispheres">
+        <h3>HEMISPHERE 2</h3>
+        <img src="{{mars_results.Mars_hemisphere_pics.Schiaparelli Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+      </div>
+    </div>
+    <div class="row" id="Mars-Fourth-Row">
+      <div class="col-md-6" id="Mars-Hemispheres">
+        <h3>HEMISPHERE 3</h3>
+        <img src="{{mars_results.Mars_hemisphere_pics.Syrtis Major Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+      </div>
+      <div class="col-md-6" id="Mars-Hemispheres">
+        <h3>HEMISPHERE 4</h3>
+        <img src="{{mars_results.Mars_hemisphere_pics.Valles Marineris Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
