@@ -11,10 +11,11 @@ client = pymongo.MongoClient(conn)
 
 # Create a db
 db = client.Mars_db
+collection = db.Mars_info
 # for debugging NOT to be used in production stuff
-db.roster.drop()
+db.Mars_info.drop()
 # Create a collection inside my db and insert stuff in it
-db.roster.insert_many(
+db.Mars_info.insert_one(
     [
         {
             'news_title': news_title,
@@ -24,11 +25,15 @@ db.roster.insert_many(
 )
 
 @app.route("/")
-def home():
-    players = list(db.roster.find())
+def index():
+    listing_results = listings.find()
+    return render_template("index.html", listing_results=listing_results)
 
-    return render_template("index.html", players=players)
 
+@app.route("/Mars_scrape")
+def Mars_scrape():
+    final_mars_data = Final_scrape()
+    mars.update(data)
 # @app.route('/insert/<name>/<position>')
 # def insert(name, position):
 #     new_player =         {

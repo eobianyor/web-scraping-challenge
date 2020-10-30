@@ -139,7 +139,7 @@ def scrape_Hemispheres():
     return jsonify(NASA_Mars_Hemisphere_Dict)
 
 @app.route("/api/v1.0/Final_scrape")
-def /api/v1.0/Final_scrape():
+def Final_scrape():
     Mars_data = {
         'Mars_News_title': NASA_News_dict['news_title'],
         'Mars_News_paragraph': NASA_News_dict['news_paragraph'],
@@ -147,13 +147,8 @@ def /api/v1.0/Final_scrape():
         'Mars_facts_table': NASA_Mars_html,
         'Mars_hemisphere_pics': NASA_Mars_Hemisphere_Dict
     }
-
-    return jsonify(Mars_data)
-#     return "This is home. This is where the heart is"
-
-# @app.route("/api/v1.0/<start>/<end>")
-# def end():
-#     return "This is home. This is where the heart is"
+    
+    return f"{Mars_data} is ready for the database."
 
 if __name__=="__main__":
     app.run(debug=True)
