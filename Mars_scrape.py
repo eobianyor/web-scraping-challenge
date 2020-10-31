@@ -4,14 +4,19 @@ import pandas as pd
 import datetime as dt
 import time
 
+
 def scrape_NASA_Mars():
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    # browser = Browser('chrome', **executable_path, headless=False)
 
+    # You can set headless to True if you don't want an actual browser opened up to do the scrapping
+    browser = Browser('chrome', **executable_path, headless=True)
+
+    # Define url and send browser to visit the url and take the html from the browser
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
     html = browser.html
-    soup = bsoup(html,'html.parser')
+    soup = bsoup(html, 'html.parser')
 
     results = soup.find_all('div', class_="content_title")
     title = (results[1].get_text().strip())
@@ -44,7 +49,8 @@ def scrape_NASA_Mars():
     # Get table as a dict for route
     NASA_Mars_dict = Mars_facts_df.to_dict()
 
-    Hemisphere_List = ["Cerberus Hemisphere Enhanced", "Schiaparelli Hemisphere Enhanced", "Syrtis Major Hemisphere Enhanced", "Valles Marineris Hemisphere Enhanced"]
+    Hemisphere_List = ["Cerberus Hemisphere Enhanced", "Schiaparelli Hemisphere Enhanced",
+                       "Syrtis Major Hemisphere Enhanced", "Valles Marineris Hemisphere Enhanced"]
     NASA_Mars_Hemisphere_Dict = {}
     base_url = "https://astrogeology.usgs.gov/"
     for Hemisphere in Hemisphere_List:
@@ -67,16 +73,17 @@ def scrape_NASA_Mars():
         NASA_Mars_Hemisphere_Dict[Hemisphere] = final_url
 
     Mars_data = {
-    'Mars_News_title': NASA_News_dict['news_title'],
-    'Mars_News_paragraph': NASA_News_dict['news_paragraph'],
-    'Mars_featured_pics': NASA_image_dict,
-    'Mars_facts_table': NASA_Mars_html,
-    'Mars_facts_Dict': NASA_Mars_dict,
-    'Mars_hemisphere_pics': NASA_Mars_Hemisphere_Dict
+        'Mars_News_title': NASA_News_dict['news_title'],
+        'Mars_News_paragraph': NASA_News_dict['news_paragraph'],
+        'Mars_featured_pics': NASA_image_dict,
+        'Mars_facts_table': NASA_Mars_html,
+        'Mars_facts_Dict': NASA_Mars_dict,
+        'Mars_hemisphere_pics': NASA_Mars_Hemisphere_Dict
     }
-    
+
     return Mars_data
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     Mars_data = scrape_NASA_Mars()
     print(Mars_data)

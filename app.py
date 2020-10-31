@@ -11,19 +11,22 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Mars_db"
 mongo = PyMongo(app)
 
+
 @app.route("/")
 def index():
     mars_results = mongo.db.Mars_info.find_one()
     return render_template("index.html", mars_results=mars_results)
 
+
 @app.route("/scrape")
 def scraper():
     mars = mongo.db.Mars_info
     marss_data = Mars_scrape.scrape_NASA_Mars()
-    print(marss_data)
-    mars.update({}, marss_data, upsert = True)
+    # print(marss_data) - To make sure you have a dictionary
+    mars.update({}, marss_data, upsert=True)
     # Use Flask's redirect function to send us to a different route once this task has completed.
     return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
