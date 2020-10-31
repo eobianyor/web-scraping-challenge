@@ -19,59 +19,113 @@
     <div class="row" id="Mars-News" id="Mars-First-Row">
       <div class="col-md-12">
         <h3>LATEST NEWS ON OUR RED NEIGHBOR</h3>
-        <h4>{{mars_results.Mars_News_title}}</h4>
-        <p>{{mars_results.Mars_News_paragraph}}</p>
+        <h4>{{ mars_results['Mars_News_title'] }}</h4>
+        <p>{{ Mars_data['Mars_News_paragraph'] }}</p>
       </div>
     </div>
 
     <div class="row" id="Mars-Second-Row">
       <div class="col-md-8" id="Mars-featured-image">
         <h3>FEATURED IMAGES</h3>
-        <img src="{{mars_results.featured_image}}" alt="Featured image from the Red Planet">
+        <img src={{ Mars_data['Mars_featured_pics']['featured_image'] }} alt="Featured image from the Red Planet">
       </div>
+      <!-- ------------------------------------------------------------------------- -->
       <div class="col-md-4">
-        <table class="table">
+        <table border="2" class="table">
           <thead>
             <tr>
-              <th scope="col">Date Posted</th>
-              <th scope="col">Headline</th>
-              <th scope="col">Neighborhood</th>
-              <th scope="col">Price</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
+      <!-- ------------------------------------------------------------------------- -->
           <tbody>
-          <!-- Within the table body, create a new table row (<tr>) for each player in our database. -->
-            {% for listing in listing_results %}
             <tr>
-              <td>{{ listing.date }}</td>
-              <td>{{ listing.headline }}</td>
-              <td>{{ listing.hood }}</td>
-              <td>{{ listing.price }}</td>
+              <th>0</th>
+              <td>Equatorial Diameter:</td>
+              <td>6,792 km</td>
             </tr>
-            {% endfor %}
-
+            <tr>
+              <th>1</th>
+              <td>Polar Diameter:</td>
+              <td>6,752 km</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>Mass:</td>
+              <td>6.39 × 10^23 kg (0.11 Earths)</td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>Moons:</td>
+              <td>2 (Phobos &amp; Deimos)</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>Orbit Distance:</td>
+              <td>227,943,824 km (1.38 AU)</td>
+            </tr>
+            <tr>
+              <th>5</th>
+              <td>Orbit Period:</td>
+              <td>687 days (1.9 years)</td>
+            </tr>
+            <tr>
+              <th>6</th>
+              <td>Surface Temperature:</td>
+              <td>-87 to -5 °C</td>
+            </tr>
+            <tr>
+              <th>7</th>
+              <td>First Record:</td>
+              <td>2nd millennium BC</td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td>Recorded By:</td>
+              <td>Egyptian astronomers</td>
+            </tr>
           </tbody>
         </table>
+      <!-- ------------------------------------------------------------------------- -->
+          <!-- <tbody>
+          <!-- Within the table body, create a new table row (<tr>) for each player in our database. -->
+            {% for line in NASA_Mars_dict %}
+            <tr>
+              <td>{{ mars_results.NASA_Mars_dict.0[0] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[1] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[2] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[3] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[4] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[5] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[6] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[7] }}</td>
+              <td>{{ mars_results.NASA_Mars_dict.0[8] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table> -->
+       <!-- ------------------------------------------------------------------------- -->
       </div>
     </div>
     <div class="row" id="Mars-Third-Row">
       <div class="col-md-6" id="Mars-Hemispheres">
         <h3>HEMISPHERE 1</h3>
-        <img src="{{mars_results.Mars_hemisphere_pics.Cerberus Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+        <img src={{ Mars_data['Mars_hemisphere_pics']['Cerberus Hemisphere Enhanced'] }} alt="Featured image from the Red Planet">
       </div>
       <div class="col-md-6" id="Mars-Hemispheres">
         <h3>HEMISPHERE 2</h3>
-        <img src="{{mars_results.Mars_hemisphere_pics.Schiaparelli Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+        <img src={{ mars_results.Mars_data['Mars_hemisphere_pics']['Schiaparelli Hemisphere Enhanced'] }} alt="Featured image from the Red Planet">
       </div>
     </div>
     <div class="row" id="Mars-Fourth-Row">
       <div class="col-md-6" id="Mars-Hemispheres">
         <h3>HEMISPHERE 3</h3>
-        <img src="{{mars_results.Mars_hemisphere_pics.Syrtis Major Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+        <img src={{mars_results[' Mars_data']['Mars_hemisphere_pics']['Syrtis Major Hemisphere Enhanced'] }} alt="Featured image from the Red Planet">
       </div>
       <div class="col-md-6" id="Mars-Hemispheres">
         <h3>HEMISPHERE 4</h3>
-        <img src="{{mars_results.Mars_hemisphere_pics.Valles Marineris Hemisphere Enhanced}}" alt="Featured image from the Red Planet">
+        <img src={{ Mars_data['Mars_hemisphere_pics']['Valles Marineris Hemisphere Enhanced'] }} alt="Featured image from the Red Planet">
       </div>
     </div>
 
