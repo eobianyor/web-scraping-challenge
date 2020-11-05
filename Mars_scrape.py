@@ -77,7 +77,7 @@ def scrape_NASA_Mars():
         'Mars_News_paragraph': NASA_News_dict['news_paragraph'],
         'Mars_featured_pics': NASA_image_dict,
         'Mars_facts_table': NASA_Mars_html,
-        'Mars_facts_Dict': NASA_Mars_dict,
+        # 'Mars_facts_Dict': NASA_Mars_dict,
         'Mars_hemisphere_pics': NASA_Mars_Hemisphere_Dict
     }
 

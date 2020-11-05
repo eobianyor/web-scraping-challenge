@@ -26,6 +26,7 @@ def scraper():
     mars.update({}, marss_data, upsert=True)
     # Use Flask's redirect function to send us to a different route once this task has completed.
     return redirect("/")
+    # return marss_data
 
 
 if __name__ == "__main__":
